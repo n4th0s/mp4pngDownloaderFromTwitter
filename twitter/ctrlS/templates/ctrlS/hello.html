@@ -1,0 +1,20 @@
+<html>
+<body>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <!-- <div>
+      <label for="name">名前</label>
+      <input type="text" id="name" name="name">
+    </div> -->
+    <div>
+      <label for="folder">保存フォルダ</label>
+      <input type="folder" id="folder" name="folder" value="{{ folder }}">
+    </div>
+    <div>
+      <label for="message">状況</label>
+      <textarea id="message" name="message">{{ message }}</textarea>
+    </div>
+    <input type="submit" value="送信する">
+  </form>
+</body>
+</html>
