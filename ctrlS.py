@@ -32,7 +32,7 @@ def set():
     consumer_secret =""
     access_token = ""
     access_token_secret = ""
-    Account = ""
+    Account = ''
 
     ######################################################
     # Twitterオブジェクトの生成
@@ -108,7 +108,7 @@ def UnLikeTweet(tweet_id):
 
 def main():
     Account, api = set()
-    tweets = api.get_favorites(user_id = id, count=50) # いいね取得。取れるのは投稿時間ごとに遡る形式
+    tweets = api.get_favorites(user_id = id, count=1) # いいね取得。取れるのは投稿時間ごとに遡る形式
     # print(tweets)
     # tweets = ClientInfo().get_tweets(ids="1536703927084691456")
     # print(tweets)
@@ -131,8 +131,9 @@ def main():
             # print(tweet.text)
             text = re.sub('https.*', '', tweet.text) # tweetのtext部分を取り出して余計なものの消去
             text = re.sub('#.*', '', text)
-            f = open('text_only.txt', 'a', encoding='utf-8')
-            f.write('\n' + text + '\n')
+            twtime = tweet.created_at
+            f = open(path + '\\text_only.txt', 'a', encoding='utf-8')
+            f.write('\n' + text + '\n' + tweet.author.name + ' ' + str(twtime.year) + '_' + str(twtime.month) + '_' + str(twtime.day) + '\n')
             f.close()
         # UnLikeTweet(tweet.id)
     main_comment = "終了しました"
